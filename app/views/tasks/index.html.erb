@@ -1,0 +1,18 @@
+<h1> liste des taches </h1>
+
+<ul>
+<% @tasks.each do |task| %>
+<%= link_to task_path(task) do %>
+
+<li> <%= task.title %> </li>
+
+<%= link_to "Delete",
+  destroy_path(task.id),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+  <% end %>
+<% end %>
+</ul>
+
+<%= link_to 'Ajouter une nouvelle Tache',
+new_task_path %>
